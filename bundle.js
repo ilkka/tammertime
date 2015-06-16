@@ -20789,6 +20789,14 @@
 	var BGW = 200;
 	var BGH = 227;
 
+	function randomX() {
+	  Math.floor(Math.random() * (window.innerWidth - BGW + 1));
+	}
+
+	function randomY() {
+	  Math.floor(Math.random() * (window.innerHeight - BGH + 1));
+	}
+
 	function randomizePos(_x4) {
 	  var _again2 = true;
 
@@ -20797,8 +20805,8 @@
 	    x = y = undefined;
 	    _again2 = false;
 
-	    var x = Math.floor(Math.random() * (window.innerWidth - BGW + 1));
-	    var y = Math.floor(Math.random() * (window.innerHeight - BGH + 1));
+	    var x = randomX();
+	    var y = randomY();
 	    if (x < e.clientX && x + BGW > e.clientX && y > e.clientY && y + BGH > e.clientY) {
 	      _x4 = e;
 	      _again2 = true;
@@ -20819,8 +20827,8 @@
 	      width: BGW,
 	      height: BGH,
 
-	      x: Math.random() * window.innerWidth,
-	      y: Math.random() * window.innerHeight
+	      x: randomX(),
+	      y: randomY()
 	    };
 	  }
 
