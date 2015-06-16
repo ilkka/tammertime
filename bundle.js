@@ -102,7 +102,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
-	exports.push([module.id, "#app{position:relative}.touchthis{width:200px;height:227px;position:absolute;background-size:contain}", ""]);
+	exports.push([module.id, "#app{position:relative}.touchthis{position:absolute;background-size:contain}", ""]);
 
 /***/ },
 /* 4 */
@@ -20786,6 +20786,29 @@
 
 	var BGURL = __webpack_require__(163);
 
+	var BGW = 200;
+	var BGH = 227;
+
+	function randomizePos(_x4) {
+	  var _again2 = true;
+
+	  _function2: while (_again2) {
+	    var e = _x4;
+	    x = y = undefined;
+	    _again2 = false;
+
+	    var x = Math.floor(Math.random() * (window.innerWidth - BGW + 1));
+	    var y = Math.floor(Math.random() * (window.innerHeight - BGH + 1));
+	    if (x < e.clientX && x + BGW > e.clientX && y > e.clientY && y + BGH > e.clientY) {
+	      _x4 = e;
+	      _again2 = true;
+	      continue _function2;
+	    } else {
+	      return { x: x, y: y };
+	    }
+	  }
+	}
+
 	var App = (function (_React$Component) {
 	  function App(props) {
 	    _classCallCheck(this, App);
@@ -20793,6 +20816,9 @@
 	    _get(Object.getPrototypeOf(App.prototype), 'constructor', this).call(this, props);
 
 	    this.state = {
+	      width: BGW,
+	      height: BGH,
+
 	      x: Math.random() * window.innerWidth,
 	      y: Math.random() * window.innerHeight
 	    };
@@ -20806,6 +20832,8 @@
 	      var _this = this;
 
 	      var style = {
+	        width: BGW,
+	        height: BGH,
 	        left: this.state.x,
 	        top: this.state.y,
 	        backgroundImage: 'url(' + BGURL + ')'
@@ -20813,7 +20841,7 @@
 
 	      return _react2['default'].createElement(
 	        'span',
-	        { className: 'touchthis', style: style, onMouseEnter: function (e) {
+	        { className: 'touchthis', style: style, onMouseMove: function (e) {
 	            return _this.move(e);
 	          }, onMouseDown: this.move },
 	        'U can\'t touch this'
@@ -20822,10 +20850,7 @@
 	  }, {
 	    key: 'move',
 	    value: function move(e) {
-	      this.setState({
-	        x: Math.random() * window.innerWidth,
-	        y: Math.random() * window.innerHeight
-	      });
+	      this.setState(randomizePos(e));
 	    }
 	  }]);
 
