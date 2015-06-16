@@ -4,9 +4,17 @@ const BGURL = require('../../img/tampere.png');
 const BGW = 200;
 const BGH = 227;
 
+function randomX() {
+  Math.floor(Math.random() * (window.innerWidth - BGW + 1));
+}
+
+function randomY() {
+  Math.floor(Math.random() * (window.innerHeight - BGH + 1));
+}
+
 function randomizePos(e) {
-  let x = Math.floor(Math.random() * (window.innerWidth - BGW + 1));
-  let y = Math.floor(Math.random() * (window.innerHeight - BGH + 1));
+  let x = randomX();
+  let y = randomY();
   if (x < e.clientX && (x + BGW > e.clientX) &&
       y > e.clientY && (y + BGH > e.clientY)
   ) {
@@ -24,8 +32,8 @@ export default class App extends React.Component {
       width: BGW,
       height: BGH,
 
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight
+      x: randomX(),
+      y: randomY()
     }
   }
 
