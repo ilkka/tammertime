@@ -20851,7 +20851,9 @@
 	        'span',
 	        { className: 'touchthis', style: style, onMouseMove: function (e) {
 	            return _this.move(e);
-	          }, onMouseDown: this.move },
+	          }, onMouseDown: function (e) {
+	            return _this.move(e);
+	          } },
 	        'U can\'t touch this'
 	      );
 	    }
