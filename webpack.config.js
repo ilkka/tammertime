@@ -17,7 +17,7 @@ module.exports = {
   },
   output: {
     path: require('path').resolve('build'),
-    publicPath: '/',
+    publicPath: '/tammertime/',
     filename: 'bundle.js'
   },
   module: {
