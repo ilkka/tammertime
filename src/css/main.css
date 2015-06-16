@@ -1,0 +1,10 @@
+#app {
+  position: relative;
+}
+
+.touchthis {
+  width: 200px;
+  height: 227px;
+  position: absolute;
+  background-size: contain;
+}
