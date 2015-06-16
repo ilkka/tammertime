@@ -20790,11 +20790,11 @@
 	var BGH = 227;
 
 	function randomX() {
-	  Math.floor(Math.random() * (window.innerWidth - BGW + 1));
+	  return Math.floor(Math.random() * (window.innerWidth - BGW + 1));
 	}
 
 	function randomY() {
-	  Math.floor(Math.random() * (window.innerHeight - BGH + 1));
+	  return Math.floor(Math.random() * (window.innerHeight - BGH + 1));
 	}
 
 	function randomizePos(_x4) {
